@@ -5,3 +5,30 @@
   To use Glyphicons sprites instead of Font Awesome, replace with "require twitter-bootstrap-static/sprites"
   =require twitter-bootstrap-static/fontawesome
 */
+
+footer {
+  color: #8c8c8c;
+}
+
+.navbar-static-top {
+  background-image: asset-url('burning.png');
+  background-size: 100px;
+  background-repeat: no-repeat;
+  height: 150px;
+  background-position: 10px 0px;
+}
+
+.navbar-brand {
+  font-size: 30px;
+  margin-left: 50px;
+}
+
+.navbar-large { font-size: 20px; }
+
+.bernie-pic { 
+  background-image: asset-url('bernie-sanders.jpg');
+  background-repeat: no-repeat;
+  background-size: 300px;
+  height: 220px;
+  background-position: 10px 0px;
+}

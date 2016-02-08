@@ -1,0 +1,9 @@
+<h3><i class="fa fa-twitter-square"></i> Lately from Bernie</h3>
+<ul class="nav nav-list small">
+  <% cache('get_bernie_tweets', expires_in: 1.hour) do %>
+    <% TwitterApi.get_bernie_tweets.each do |tweet| %>
+      <li class="list-group-item"><%= parsed_tweet tweet %></li>
+    <% end %>
+  <% end %>
+  <li class="list-group-item bernie-pic"></li>
+</ul>
