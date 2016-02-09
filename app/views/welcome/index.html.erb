@@ -1,7 +1,12 @@
 <% if !current_user %>
-Log in
+
+  <%= render 'greeting' %>
 
 <% else %>
-You are here.
 
+  <div>
+    
+    <h4>Logged in</h4>
+    
+  </div>
 <% end %>
