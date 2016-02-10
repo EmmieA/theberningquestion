@@ -17,7 +17,7 @@
             <li><%= link_to "Pose A New Question", new_question_path %></li>
           </ul>
         </li>        
-        <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li>
+        <li><%= link_to "Logout #{current_user.username}", destroy_user_session_path, method: :delete %></li>
       <% else %>
         <li><%= link_to "Login", new_user_session_path %></li>      
       <% end %>
