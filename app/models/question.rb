@@ -9,7 +9,7 @@ class Question < ActiveRecord::Base
   scope :most_voted, -> do
     where(created_at: (Time.now - 7.days)..Time.now ) # created 7 days ago
     .order('votes_count DESC')                        # ordered by votes_count
-    .limit(100)                                       # first 100
+    .limit(5)                                         # top 5
   end
 
 end
