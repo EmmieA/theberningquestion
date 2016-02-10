@@ -6,7 +6,7 @@ class WelcomeController < ApplicationController
     @questions = Question.order('votes_count DESC').limit(5)
     
     # Need a list of the most recent Blurbs
-    # @blurbs = Blurb.
+    @blurbs = Blurb.order('created_at DESC').limit(10)
     
   end
 end

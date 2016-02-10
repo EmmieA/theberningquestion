@@ -1,5 +1,10 @@
-<%= render 'shared/instructions' %>
+<%= render partial: 'shared/page_title', :locals => {:heading => 'Pose Your Question'} %>
+
+<p class="instructions">
+  Please consider your question carefully and craft it concisely. You have 300 characters which will 
+  allow you to provide some context for your thoughts. Keeping it clean and professional will 
+  make it vote-worthy. We want to engage all readers and foster healthy discussion. If it's 
+  voted into the Top 5, it might receive an answer by Bernie himself so tell your friends!
+</p>
 
 <%= render 'form' %>
-
-<%= link_to 'Back', questions_path %>

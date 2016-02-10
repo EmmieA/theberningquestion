@@ -3,7 +3,7 @@
 <%= form_for(@question, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
   <div class="row">
     <div class="col-md-9">
-      <%= f.text_area :question, size: "76x5", maxlength: 300, autofocus: true %>
+      <%= f.text_area :question, size: "76x5", maxlength: 300, autofocus: true, placeholder: 'Craft your question in 300 characters or less' %>
     </div>
   </div>
   

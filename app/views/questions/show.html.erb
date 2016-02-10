@@ -3,11 +3,11 @@
 
     <%= render partial: 'shared/page_title', :locals => {:heading => 'The Whole Story'} %>
     
-    <p class="meta-details-lg">
+    <div class="subtitle">
       All the details about this question are here... You can vote (and unvote!), make a note of the author, and see any discussions 
       that have resulted as we debate the merits and how-tos of what was asked. Your voice is crucial! Please 
       contribute in any way that inspires you.
-    </p>
+    </div>
     <hr/>
     
     <div class="lead">
@@ -23,16 +23,15 @@
 
 <div class="row">
   <div class="col-md-12">
-    <h4><i class="fa fa-comments orange icon-lg"></i> <em>Discussions we're having about this <small>- <%= link_to "(you can also start a new one)", new_blurb_path %></small></em></h4>
+    <h4><i class="fa fa-comments orange icon-lg"></i> <em>Discussions we're having about this <small>- <%= link_to "(you can also start a new one)", new_blurb_path(question_id: @question.id) %></small></em></h4>
   </div>
   
-  <% @blurbs.each do |blurb| %>
-    <div class="col-md-1">
-      <span class="badge"><%= pluralize(b.blurb.comments.count, 'comment') %></span>
-    </div>
-    <div class="col-md-11">
-      <%= b.blurb %>
-    </div>
+  <table class="table table-striped">
+    <% @blurbs.each do |blurb| %>
+      <tr>
+        <td><span class="blurb-list"><%= blurb.blurb %></span> <span class="label label-info"><%= pluralize(blurb.comments.count, 'comment') %></span></td>
+      </tr>
+    <% end %>
+  </table>
   
-  <% end %>
 </div>

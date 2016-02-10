@@ -10,6 +10,12 @@
 
 h1, h2, h3, h4, h5, h6 { color: #4d4d4d; }
 
+hr.style-four {
+  height: 12px;
+  border: 0;
+  box-shadow: inset 0 12px 12px -12px rgba(0, 0, 0, 0.5);
+}
+
 /* ------------ POSITIONING & SPACING */
 
 .pad-l-10 { padding-left: 10px; }
@@ -28,6 +34,7 @@ h1, h2, h3, h4, h5, h6 { color: #4d4d4d; }
 .instructions {
   font-style: italic;
   padding: 0 0 10px 0;
+  color: #8c8c8c;
 }
 .top-question-bg { 
   background-color: #fff5e6; 
@@ -45,15 +52,16 @@ h1, h2, h3, h4, h5, h6 { color: #4d4d4d; }
   color: #8c8c8c;
   font-style: italic;
 }
-.meta-details-lg {
-  font-size: .9em;
-  color: #8c8c8c;
+.subtitle {
   font-style: italic;
+  padding: 0 0 10px 0;
+  color: #4d4d4d;
 }
 .home-title {
   color: #e65c00;
   font-style: italic;
 }
+.blurb-list { font-size: .9em; }
 .orange { color: #e65c00; }
 
 /* ------------ CONTAINERS */
@@ -73,6 +81,7 @@ footer {
   margin-left: 60px;
 }
 .navbar-large { font-size: 20px; }
+.button-container { margin-top: 10px; }
 
 /* ------------ IMAGE BACKGROUNDS & ICONS */
 
@@ -100,4 +109,3 @@ footer {
 }
 
 .icon-lg { font-size: 30pt; }
-

@@ -1,0 +1,27 @@
+<div class="row col-md-12">
+  <h1 class="home-title">Here's what we're concerned about</h1>
+  
+  <% questions.each_with_index do |q, i| %>
+    <% if i == 0 %>
+      <h4>
+        With <%= pluralize(q.votes.count, 'vote') %>, our Berning Question is posed by <%= q.user.username %>,  
+        written on <%= q.created_at.strftime("%B %d, %Y") %>
+      </h4>
+      <hr>
+      <div class="lead well top-question-bg">
+        <%= link_to q.question, question_path(q), :class => 'top-question-href' %>
+      </div>
+      <hr>
+    <% else %>
+      <% if i ==1 %>
+        <h5 class="orange">
+          Rounding out the top 5 questions are these next four which received the highest votes. 
+          Click on any question to read it fully, and lend your own voice by voting or starting a blurb!
+        </h5>
+      <% end %>
+      <div class="mb-10 mt-10 top-question-group">
+        <strong><%= i+1 %></strong> - <%= link_to truncate(q.question, length: 100), question_path(q), class: 'top-question-href' %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

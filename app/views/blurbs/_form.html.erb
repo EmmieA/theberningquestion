@@ -1,0 +1,16 @@
+<%= render 'shared/errors', obj: @blurb %>
+
+<%= form_for(@blurb, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+  <%= hidden_field_tag 'question_id', params[:question_id] %>
+  
+  <div class="row">
+    <div class="col-md-9">
+      <%= f.text_area :blurb, size: "76x5", maxlength: 500, autofocus: true, placeholder: 'Make your point! 500 characters...' %>
+    </div>
+  </div>
+
+  <div class="button-container">
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
+  
+<% end %>

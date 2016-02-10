@@ -1,0 +1,15 @@
+<%= render partial: 'shared/page_title', :locals => {:heading => 'Start a Discussion!'} %>
+
+<div class="well">
+  "<%= @question.question%>" <span class="meta-details">- <%= @question.user.username %></span>
+</div>
+
+
+<p class="instructions">
+  Raise a concern or elaborate on a particular viewpoint of yours about this question. Everything is fair game. Just keep it 
+  clean and professional so other folks will be enticed to contribute. Remember - the best 
+  questions generate honest discussion. And great discussion leads to voting. And voting leads to exposure 
+  and solutions!
+</p>
+
+<%= render 'form' %>

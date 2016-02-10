@@ -1,0 +1,21 @@
+<div class="row">
+  
+  <div class="col-md-12">
+    <hr class="style-four" style="margin-bottom: -8px;">
+    
+    <h4><i class="fa fa-comments orange icon-lg"></i> <em>Top 10 discussions happening</em></h4>
+    
+    <div class="instructions">We're talking about these questions, too! These are the 
+    top 10 most recent discussions. You can get to everything that's ever been said though, by browsing in 
+    What We're Asking (up top).</div>
+  </div>
+  
+  <table class="table table-striped">
+    <% blurbs.each do |blurb| %>
+      <tr>
+        <td class="small"><%= link_to truncate(blurb.blurb, length: 200), question_path(blurb.question), class: 'top-question-href' %></td>
+      </tr>
+    <% end %>
+  </table>
+  
+</div>
