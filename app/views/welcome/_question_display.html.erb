@@ -13,7 +13,7 @@
       </div>
       <hr>
     <% else %>
-      <% if i ==1 %>
+      <% if i == 1 %>
         <div class="question-container">
           <h5 class="pad-b-10">
             Rounding out the top 5 questions are these next four which received the highest votes. 
@@ -25,5 +25,8 @@
           </div>
     <% end %>
   <% end %>
-        </div> <!-- Closes question container -->
+  
+  <% if questions.count > 1 %>
+        </div> <!-- Closes question container which was opened inside of the each loop -->
+  <% end %>
 </div>
