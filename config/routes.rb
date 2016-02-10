@@ -1,14 +1,13 @@
 Rails.application.routes.draw do
-  # get 'welcome/index'
-
-  resources :questions
-  
-  devise_for :users
-
-  # The priority is based upon order of creation: first created -> highest priority.
-  # See how all your routes lay out with "rake routes".
 
   root 'welcome#index'
+
+  resources   :questions
+
+  post    'vote',   to: 'votes#create'
+  delete  'unvote', to: 'votes#destroy'
+
+  devise_for :users
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'

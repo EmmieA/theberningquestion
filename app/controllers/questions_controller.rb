@@ -1,63 +1,50 @@
 class QuestionsController < ApplicationController
+  
   before_action :set_question, only: [:show, :edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
-  # GET /questions
-  # GET /questions.json
   def index
-    @questions = Question.all
+    @questions = Question.all.order("id DESC")
   end
 
-  # GET /questions/1
-  # GET /questions/1.json
   def show
   end
 
-  # GET /questions/new
   def new
     @question = Question.new
   end
 
-  # GET /questions/1/edit
   def edit
   end
+  
 
-  # POST /questions
-  # POST /questions.json
   def create
     @question = Question.new(question_params)
+    @question.user = current_user
 
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
-        format.json { render :show, status: :created, location: @question }
       else
         format.html { render :new }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /questions/1
-  # PATCH/PUT /questions/1.json
   def update
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
-        format.json { render :show, status: :ok, location: @question }
       else
         format.html { render :edit }
-        format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /questions/1
-  # DELETE /questions/1.json
   def destroy
     @question.destroy
     respond_to do |format|
       format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
@@ -68,7 +55,16 @@ class QuestionsController < ApplicationController
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
+    # This method ensures the "white-listing" of what's being passed into the contoller.
+    # We specify what is expected in the params sent from the view
     def question_params
-      params.require(:question).permit(:question, :answer)
+      params.require(:question).permit(:question, topic_ids: [])
     end
+
+  def require_same_user
+    if current_user != @question.user
+      flash[:danger] = "You can only edit or delete your own article"
+      redirect_to root_path
+    end
+  end
 end

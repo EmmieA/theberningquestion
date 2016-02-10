@@ -1,0 +1,18 @@
+<% if obj.errors.any? %>
+  <div class="row">
+    <div class="col-sm-offset-2 col-sm-6">
+      <div class="panel panel-danger">
+        <div class="panel-heading">
+          <h2 class="panel-title">Oops! Check any errors and adjust your entries</h2>
+        </div>
+        <div class="panel-body">
+          <ul>
+            <% obj.errors.full_messages.each do |msg| %>
+              <li class="text-danger"><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

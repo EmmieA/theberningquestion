@@ -1,14 +1,11 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Question:</strong>
-  <%= @question.question %>
-</p>
-
-<p>
-  <strong>Answer:</strong>
-  <%= @question.answer %>
-</p>
+<div class="row">
+  <div class="col-md-12 lead">
+    <%= @question.question %>
+    <span class="meta-details pad-l-10">
+      <br/>posed by <%= @question.user.username %> on <%= @question.created_at.strftime("%B %d, %Y") %>
+    </span>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_question_path(@question) %> |
 <%= link_to 'Back', questions_path %>

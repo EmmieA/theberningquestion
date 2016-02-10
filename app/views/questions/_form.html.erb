@@ -1,25 +1,27 @@
-<%= form_for(@question) do |f| %>
-  <% if @question.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@question.errors.count, "error") %> prohibited this question from being saved:</h2>
+<%= render 'shared/errors', obj: @question %>
 
-      <ul>
-      <% @question.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<%= form_for(@question, :html => {class: 'form-horizontal', role: 'form'}) do |f| %>
+  <div class="row">
+    <div class="col-md-9">
+      <%= f.text_area :question, size: "76x5", maxlength: 300, autofocus: true %>
     </div>
-  <% end %>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-9">
+      <div class="panel panel-success">
+        <div class="panel-heading small">Check as many topics as apply!</div>
+        <div class="panel-body small">
+          <%= f.collection_check_boxes :topic_ids, Topic.order("name ASC").all, :id, :name do |cb| %>
+            <% cb.label(class: "checkbox-inline") {cb.check_box(class: "checkbox") + cb.text} %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>  
+    
+  <div>
+    <%= f.submit class: 'btn btn-primary' %>
+  </div>
 
-  <div class="field">
-    <%= f.label :question %><br>
-    <%= f.text_field :question %>
-  </div>
-  <div class="field">
-    <%= f.label :answer %><br>
-    <%= f.text_field :answer %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
 <% end %>

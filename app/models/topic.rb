@@ -1,3 +1,8 @@
 class Topic < ActiveRecord::Base
-  has_and_belongs_to_many   :questions
+  # RELATIONSHIPS
+  has_many    :question_topics
+  has_many    :questions, through: :question_topics
+
+  # CALLBACKS
+  before_save { self.name = name.downcase }
 end
