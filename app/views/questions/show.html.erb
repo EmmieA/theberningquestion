@@ -1,11 +1,38 @@
 <div class="row">
-  <div class="col-md-12 lead">
-    <%= @question.question %>
-    <span class="meta-details pad-l-10">
-      <br/>posed by <%= @question.user.username %> on <%= @question.created_at.strftime("%B %d, %Y") %>
-    </span>
+  <div class="col-md-12">
+
+    <%= render partial: 'shared/page_title', :locals => {:heading => 'The Whole Story'} %>
+    
+    <p class="meta-details-lg">
+      All the details about this question are here... You can vote (and unvote!), make a note of the author, and see any discussions 
+      that have resulted as we debate the merits and how-tos of what was asked. Your voice is crucial! Please 
+      contribute in any way that inspires you.
+    </p>
+    <hr/>
+    
+    <div class="lead">
+      <%= @question.question %>
+      <span class="meta-details pad-l-10">
+        <br/>posed by <%= @question.user.username %> on <%= @question.created_at.strftime("%B %d, %Y") %>
+      </span>
+    </div>
   </div>
 </div>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<%= render partial: 'voting_bar', :locals => {:question => @question, :source => 'show'} %>
+
+<div class="row">
+  <div class="col-md-12">
+    <h4><i class="fa fa-comments orange icon-lg"></i> <em>Discussions we're having about this <small>- <%= link_to "(you can also start a new one)", new_blurb_path %></small></em></h4>
+  </div>
+  
+  <% @blurbs.each do |blurb| %>
+    <div class="col-md-1">
+      <span class="badge"><%= pluralize(b.blurb.comments.count, 'comment') %></span>
+    </div>
+    <div class="col-md-11">
+      <%= b.blurb %>
+    </div>
+  
+  <% end %>
+</div>

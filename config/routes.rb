@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources   :questions
+  resources   :blurbs
 
   post    'vote',   to: 'votes#create'
   delete  'unvote', to: 'votes#destroy'

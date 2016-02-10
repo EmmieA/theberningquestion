@@ -45,10 +45,16 @@ h1, h2, h3, h4, h5, h6 { color: #4d4d4d; }
   color: #8c8c8c;
   font-style: italic;
 }
+.meta-details-lg {
+  font-size: .9em;
+  color: #8c8c8c;
+  font-style: italic;
+}
 .home-title {
   color: #e65c00;
   font-style: italic;
 }
+.orange { color: #e65c00; }
 
 /* ------------ CONTAINERS */
 
@@ -68,7 +74,7 @@ footer {
 }
 .navbar-large { font-size: 20px; }
 
-/* ------------ IMAGE BACKGROUNDS */
+/* ------------ IMAGE BACKGROUNDS & ICONS */
 
 .bernie-pic { 
   background-image: asset-url('bernie-sanders.jpg');
@@ -92,4 +98,6 @@ footer {
   margin: -300px 0 0 -200px;
   z-index: -100;
 }
+
+.icon-lg { font-size: 30pt; }
 

@@ -1,4 +1,14 @@
+<%= render partial: 'shared/page_title', :locals => {:heading => 'All Submitted Questions'} %>
+
+<p class="meta-details-lg">
+  Here's everything we're talking about these days. You can vote up what concerns you directly on this page 
+  and dive into the deeper discussion by clicking <strong>See More</strong>. Your voice counts! Join in the 
+  discussion today.
+</p>
+<hr/>
+
 <% @questions.each do |question| %>
+
   <div class="row">
     <div class="col-md-12">
       <div class="lead">
@@ -10,34 +20,5 @@
     </div>
   </div>
    
-  <div class="row">
-    <div class="well well-sm col-md-12">
-      <div class="pull-right">
-        <%= link_to 'See More', question %>
-        <% if current_user == question.user %>
-          &nbsp;<%= link_to 'Edit', edit_question_path(question) %>
-          &nbsp;<%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </div>
-      <div class="pull-left">
-        <span class="badge"><%= pluralize(question.votes.count, "vote") %></span>
-        <span class="badge"><%= pluralize(question.blurbs.count, "blurb") %></span>
-      </div>
-      <div style="text-align: center;">
-        
-        <% if current_user.has_already_voted?(question.id) %>
-          <%= link_to(unvote_path(question_id: question.id), 
-                        method: :delete) do %>
-            <span data-toggle="tooltip" title="Cancel my vote"><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i></span>
-          <% end %>
-        <% else %>
-          <%= link_to(vote_path(question_id: question.id), 
-                    method: :post) do %>
-            <span data-toggle="tooltip" title="Vote this question up"><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i></span>
-          <% end %>
-
-        <% end %>
-      </div>
-    </div>
-  </div>
+  <%= render partial: 'voting_bar', :locals => {:question => question, :source => 'index'} %>
 <% end %>

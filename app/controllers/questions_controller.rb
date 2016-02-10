@@ -8,6 +8,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
+    @blurbs = @question.blurbs
   end
 
   def new
