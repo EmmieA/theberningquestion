@@ -108,4 +108,11 @@ footer {
   z-index: -100;
 }
 
+.question-container {
+  background-image: asset-url('question-fd.png');
+  background-repeat: no-repeat;
+  background-size: 150px;
+  background-position: 90% 0%;
+}
+
 .icon-lg { font-size: 30pt; }
