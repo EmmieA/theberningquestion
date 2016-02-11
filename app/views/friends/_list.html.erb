@@ -1,0 +1,29 @@
+<div class="row col-xs-12">
+  <% if @friendships.size > 0 %>
+  <h4 class="subtitle">Here's your current friends list...</h4>
+  
+    <table class="table">
+      <tbody>
+        <% @friendships.each do |friend| %>
+        <tr>
+          <td><%= friend.username %></td>
+          <td><%= friend.email %></td>
+          <td>
+            <%= link_to("Remove", friendship_path(friend), 
+                  :method => :delete, 
+                  #:data => {:confirm => "Are you sure?" },
+                  :class => 'btn btn-xs btn-danger btn-persist-white') %>
+          </td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  
+  <% else %>
+  
+    <div id="friend-lookup-nolist" class="row col-lg-12">
+      <h4 class="subtitle text-info">No friends to follow yet? Try using that search right up there!</h4>
+    </div>
+  
+  <% end %>
+</div>

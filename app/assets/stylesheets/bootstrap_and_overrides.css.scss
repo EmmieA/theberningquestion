@@ -25,6 +25,7 @@ hr.style-four {
 .pad-b-10 { padding-bottom: 10px; }
 .mt-5 { margin-top: 5px; }
 .mt-10 { margin-top: 10px; }
+.mt-15 { margin-top: 15px; }
 .mb-5 { margin-bottom: 5px; }
 .mb-10 { margin-bottom: 10px; }
 
@@ -112,7 +113,10 @@ footer {
   background-image: asset-url('question-fd.png');
   background-repeat: no-repeat;
   background-size: 150px;
-  background-position: 90% 0%;
+  background-position: 90% 10px;
 }
 
 .icon-lg { font-size: 30pt; }
+
+.spinner-icon { vertical-align: middle; font-size: 20pt; color: #8c8c8c;}
+.spinner-text { font-style: italic; color: #8c8c8c; font-weight: bold;}

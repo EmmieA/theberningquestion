@@ -4,9 +4,13 @@ Rails.application.routes.draw do
 
   resources   :questions
   resources   :blurbs
+  resources   :friendships
 
-  post    'vote',   to: 'votes#create'
-  delete  'unvote', to: 'votes#destroy'
+  post    'vote',             to: 'votes#create'
+  delete  'unvote',           to: 'votes#destroy'
+  get     'my_friends',       to: "users#my_friends"
+  get     'search_friends',   to: "users#search"
+  post    'add_friend',       to: "users#add_friend"
 
   devise_for :users
 

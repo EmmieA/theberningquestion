@@ -1,0 +1,70 @@
+<div id="friend-lookup">
+
+  <!-- This form is being submitted using AJAX by specifying remote: true -->
+  <!-- routes.rb defines the form action "search_friends_path" as users#search which is in the UsersController -->
+  <!-- The search method in the UsersController class executes the search method in the User model class.  -->
+
+  <!-- AJAX submission requires its javascript component -->
+  <!-- Notice also that we're not using a form helper method (form_for...), we're -->
+  <!-- straight up building the form -->
+  
+  <%= form_tag search_friends_path, remote: true, method: :get, id: 'friend-lookup-form' do %>
+    <div class="form-group row no-padding col-md-12">
+      <div class="col-md-10">
+        <%= text_field_tag :search_param, params[:search_param], 
+                              placeholder: "Search by name or email", 
+                              autofocus: true, 
+                              class: 'form-control search-box' %>
+      </div>
+      <div class="col-md-2">
+        <%= button_tag(type: :submit, class: "btn btn-success") do %>
+          <i class="fa fa-search"></i> Lookup
+        <% end %>
+      </div>
+    </div>
+  
+  <% end %>
+  
+  <%= render 'shared/spinner' %>
+  
+  <% if @users %>
+    <% if @users.size > 0 %>
+    
+      <div id="friend-lookup-result" class="row col-md-10" style="display: inline-block;">
+        <h5>
+          How cool is that? Here's <%= pluralize(@users.size, 'potential friend') %> for you to hook up with.
+        </h5>
+        <table class="table table-striped">
+          <tbody>
+            <% @users.each do |user| %>
+            <tr>
+              <td><strong><%= user.username %></strong></td>
+              <td><%= user.email %></td>
+              <td>
+                <% if user.questions.any? %>
+                  <span class="fa fa-comment orange" data-toggle="tooltip" title="Active contributor"></span>
+                <% end %>
+              </td>
+              <td class="text-center">
+                <% if current_user.already_friends_with?(user.id) %>
+                  <span class="instructions">already following</span>
+                <% else %>
+                  <%= link_to "Follow", add_friend_path(user: current_user, friend: user), class: 'btn btn-xs btn-primary btn-persist-white', method: :post %>
+                <% end %>
+              </td>
+            </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+
+    <% else %>
+      <div class="row col-lg-12">
+        <h4 class="text-primary text-center"><i class="fa fa-frown-o"></i> Nobody matches that search criteria - keep trying!</h4>
+      </div>
+    <% end %>
+  <% end %>
+  
+  <!-- When an AJAX error happens, this div is populated -->
+  <div id="friend-lookup-errors"></div>
+</div>
