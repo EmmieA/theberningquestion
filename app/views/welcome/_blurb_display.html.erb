@@ -15,6 +15,7 @@
       <table class="table table-striped">
         <% blurbs.each do |blurb| %>
           <tr>
+            <td><%= gravatar_for(blurb.user, size: 20) %></td>
             <td class="small"><%= link_to truncate(blurb.blurb, length: 200), question_path(blurb.question), class: 'top-question-href' %></td>
           </tr>
         <% end %>

@@ -13,7 +13,7 @@
     <div class="lead">
       <%= @question.question %>
       <span class="meta-details pad-l-10">
-        <br/>posed by <%= @question.user.username %> on <%= @question.created_at.strftime("%B %d, %Y") %>
+        <br/><%= gravatar_for(@question.user, size: 20) %> posed by <%= @question.user.username %> on <%= @question.created_at.strftime("%B %d, %Y") %>
       </span>
     </div>
   </div>
@@ -29,6 +29,7 @@
   <table class="table table-striped">
     <% @blurbs.each do |blurb| %>
       <tr>
+        <td><%= gravatar_for(blurb.user, size: 20) %></td>
         <td><span class="blurb-list"><%= blurb.blurb %></span> <span class="label label-info"><%= pluralize(blurb.comments.count, 'comment') %></span></td>
       </tr>
     <% end %>
