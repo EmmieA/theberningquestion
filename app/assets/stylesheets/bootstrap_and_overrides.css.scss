@@ -28,6 +28,8 @@ hr.style-four {
 .mt-15 { margin-top: 15px; }
 .mb-5 { margin-bottom: 5px; }
 .mb-10 { margin-bottom: 10px; }
+.fl { float: left; }
+.fr { float:right; }
 
 
 /* ------------ TYPOGRAPHY */
@@ -41,7 +43,7 @@ hr.style-four {
   background-color: #fff5e6; 
 }
 .top-question-href {
-  text-decoration: none !important;
+  /*text-decoration: none !important;*/
   color: #000 !important;
 }
 .top-question-group { 
@@ -64,6 +66,7 @@ hr.style-four {
 }
 .blurb-list { font-size: .9em; }
 .orange { color: #e65c00; }
+.tiny { font-size: .8em; }
 
 /* ------------ CONTAINERS */
 
@@ -83,6 +86,9 @@ footer {
 }
 .navbar-large { font-size: 20px; }
 .button-container { margin-top: 10px; }
+
+.post-container { display: flex; padding-bottom: 10px; }
+.post-item { display: inline-block; margin-right: 5px; }
 
 /* ------------ IMAGE BACKGROUNDS & ICONS */
 

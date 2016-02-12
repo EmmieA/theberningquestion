@@ -1,0 +1,28 @@
+<%= render partial: 'shared/page_title', :locals => {:heading => 'Your Discussion Feed'} %>
+
+<p class="subtitle">
+  Here's what your friends are talking about
+</p>
+
+<div class="row">
+  <div class="col-md-3">
+    &nbsp;
+  </div>
+  <div class="col-md-7 col-md-offset-1">
+    <% @friend_posts.each do |p| %>
+      <div class="post-container">
+        <div class="post-item">
+          <% if p['posttype'] == 'question' %>
+            <i class="fa fa-question-circle orange"></i>
+          <% else %>
+            <i class="fa fa-comment orange"></i>
+          <% end %>
+        </div>
+        <div class="post-item small">
+          <strong><%= p['author'] %></strong> - <%= p['userpost'] %><br>
+          <span class="meta-details tiny"><%= DateTime.parse(p['updated']).to_date.strftime("%B %d, %Y") %></span>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

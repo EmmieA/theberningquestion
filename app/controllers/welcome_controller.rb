@@ -3,7 +3,8 @@ class WelcomeController < ApplicationController
   
   def index
     # Need the top 5 questions that don't have answers
-    @questions = Question.order('votes_count DESC').limit(5)
+    # @questions = Question.order('votes_count DESC').limit(5)
+    @questions = Question.top_5
     
     # Need a list of the most recent Blurbs
     @blurbs = Blurb.order('created_at DESC').limit(10)
