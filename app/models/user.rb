@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
           "INNER JOIN Users AS u ON q.User_ID = u.ID "\
           "WHERE u.ID IN  "\
           "(SELECT f.friend_id FROM Friendships AS f WHERE f.User_ID = ?) "\
-          "ORDER BY b.updated_at DESC"
+          "ORDER BY updated DESC"
 
     # If not needing to send parameters, can be called this way  
     # @friend_posts = ActiveRecord::Base.connection.select_all(sql)
