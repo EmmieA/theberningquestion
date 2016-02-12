@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :all_question_blurbs, through: :questions, source: :blurbs
   
   def friend_posts()
-    sql = "SELECT b.Blurb AS 'userpost', b.updated_at AS 'updated', u.username AS 'author', 'blurb' AS 'posttype'
+    sql = "SELECT b.Blurb AS userpost, b.updated_at AS updated, u.username AS author, 'blurb' AS posttype
       FROM Blurbs b
       INNER JOIN Users u ON b.User_ID = u.ID
       WHERE u.ID IN 
@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
       WHERE u.ID IN 
       (SELECT f.friend_id FROM Friendships f WHERE f.User_ID = ?)
       ORDER BY b.updated_at DESC"
-     
+
     # If not needing to send parameters, can be called this way  
     # @friend_posts = ActiveRecord::Base.connection.select_all(sql)
     
