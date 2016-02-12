@@ -4,8 +4,8 @@
   <% questions.each_with_index do |q, i| %>
     <% if i == 0 %>
       <h4>
-        With <%= pluralize(q.votes.count, 'vote') %>, our Berning Question is posed by <%= q.user.username %>,  
-        written on <%= q.created_at.strftime("%B %d, %Y") %>
+        <%= q.user.username %> has written today's top Berning Question with <%= qualify_votes(q.votes.count) %> number of 
+        <%= pluralize(q.votes.count, 'vote') %> from the community.
       </h4>
       <hr>
       <div class="lead well top-question-bg">

@@ -8,6 +8,6 @@ class WelcomeController < ApplicationController
     
     # Need a list of the most recent Blurbs
     @blurbs = Blurb.order('created_at DESC').limit(10)
-    
   end
+  
 end
