@@ -8,7 +8,7 @@ class Question < ActiveRecord::Base
   
   scope :most_voted,  -> {
     where(created_at: (Time.now - 7.days)..Time.now ) # created 7 days ago
-    .order('votes_count DESC')                        # ordered by votes_count
+    .order(votes_count: :desc, updated_at: :desc)     # ordered by votes_count and then updated at
     .limit(5)                                         # top 5
   }
   
@@ -18,7 +18,7 @@ class Question < ActiveRecord::Base
   scope :top_5, -> {
     where(answers: {question_id: nil})
     .includes(:answer)
-    .order('votes_count DESC')
+    .order(votes_count: :desc, updated_at: :desc)
     .limit(5)
   }
 

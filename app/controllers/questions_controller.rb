@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
-    @questions = Question.all.order("id DESC")
+    @questions = Question.paginate(page: params[:page], per_page: 5).order(votes_count: :desc, updated_at: :desc)
   end
 
   def show
