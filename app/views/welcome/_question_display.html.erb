@@ -4,7 +4,7 @@
   <% questions.each_with_index do |q, i| %>
     <% if i == 0 %>
       <h4>
-        <%= q.user.username %> has written today's top Berning Question with <%= qualify_votes(q.votes.count) %> 
+        <%= q.user.username %> has written today's top Berning Question, receiving <%= qualify_votes(q.votes.count) %> 
         <%= pluralize(q.votes.count, 'vote') %> from the community.
       </h4>
       <hr>
