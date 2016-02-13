@@ -16,13 +16,13 @@ class User < ActiveRecord::Base
   has_many :all_question_blurbs, through: :questions, source: :blurbs
   
   def friend_posts()
-    sql = "SELECT b.Blurb AS userpost, b.updated_at AS updated, u.username AS author, 'blurb' AS posttype "\
+    sql = "SELECT b.Blurb AS userpost, b.updated_at AS updated, u.username AS author, 'blurb' AS posttype, question_id AS question_id "\
           "FROM Blurbs AS b "\
           "INNER JOIN Users AS u ON b.User_ID = u.ID "\
           "WHERE u.ID IN "\
           "(SELECT f.friend_id FROM Friendships AS f WHERE f.User_ID = ?) "\
           "UNION "\
-          "SELECT q.Question, q.updated_at, u.username, 'question' "\
+          "SELECT q.Question, q.updated_at, u.username, 'question', q.id AS question_id "\
           "FROM Questions AS q "\
           "INNER JOIN Users AS u ON q.User_ID = u.ID "\
           "WHERE u.ID IN  "\

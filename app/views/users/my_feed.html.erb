@@ -29,7 +29,7 @@
             <% end %>
           </div>
           <div class="post-item small">
-            <strong><%= p['author'] %></strong> - <%= p['userpost'] %><br>
+            <strong><%= p['author'] %></strong> - <%= link_to p['userpost'], question_path(p['question_id']), class: 'no-decoration' %><br>
             <span class="meta-details tiny"><%= DateTime.parse(p['updated']).to_date.strftime("%B %d, %Y") %></span>
           </div>
         </div>
