@@ -9,20 +9,32 @@
     <%= render 'picture_strip' %>
   </div>
   <div class="col-md-7 col-md-offset-1">
-    <% @friend_posts.each do |p| %>
-      <div class="post-container">
-        <div class="post-item">
-          <% if p['posttype'] == 'question' %>
-            <i class="fa fa-question-circle orange"></i>
-          <% else %>
-            <i class="fa fa-comment orange"></i>
-          <% end %>
+    <% if @friend_posts.count == 0 %>
+      <div class="well well-lg">
+        <h4>Oh no! Nothing to see yet.</h4>
+        <p>
+          Start following some folks using <%= link_to 'Find Friends', my_friends_path %>. Once you do, 
+          their questions and discussions will appear here so you can keep an eye on what's going on.
+        </p>
+      </div>    
+    <% else %>
+    
+      <% @friend_posts.each do |p| %>
+        <div class="post-container">
+          <div class="post-item">
+            <% if p['posttype'] == 'question' %>
+              <i class="fa fa-question-circle orange"></i>
+            <% else %>
+              <i class="fa fa-comment orange"></i>
+            <% end %>
+          </div>
+          <div class="post-item small">
+            <strong><%= p['author'] %></strong> - <%= p['userpost'] %><br>
+            <span class="meta-details tiny"><%= DateTime.parse(p['updated']).to_date.strftime("%B %d, %Y") %></span>
+          </div>
         </div>
-        <div class="post-item small">
-          <strong><%= p['author'] %></strong> - <%= p['userpost'] %><br>
-          <span class="meta-details tiny"><%= DateTime.parse(p['updated']).to_date.strftime("%B %d, %Y") %></span>
-        </div>
-      </div>
-    <% end %>
+      <% end %>
+      
+    <% end%>
   </div>
 </div>
