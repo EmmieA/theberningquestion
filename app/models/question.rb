@@ -5,6 +5,9 @@ class Question < ActiveRecord::Base
   has_many      :blurbs
   has_many      :question_topics
   has_many      :topics, through: :question_topics
+
+  validates :question, presence: true, length: { minimum: 50, maximum: 300 }
+  validates :user_id, presence: true
   
   scope :most_voted,  -> {
     where(created_at: (Time.now - 7.days)..Time.now ) # created 7 days ago

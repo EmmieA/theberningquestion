@@ -45,7 +45,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
+      format.html { redirect_to questions_path, notice: 'Done! That question is no more.' }
     end
   end
   
@@ -70,20 +70,6 @@ class QuestionsController < ApplicationController
       end
       
       after_unvote_goto_page(params[:source], did_destroy, params[:question_id])
-    end
-  end
-  
-  def destroy
-    if params[:question_id].present?
-      @vote = current_user.votes.where(question_id: params[:question_id]).first
-      if @vote
-        @vote.destroy
-        respond_to do |format|
-          format.html { redirect_to questions_path, notice: 'Vote removed' }
-        end
-      else
-        redirect_to questions_path, notice: "Unable to find this vote"
-      end
     end
   end
   
