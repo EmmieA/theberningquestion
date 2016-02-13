@@ -9,13 +9,9 @@
       contribute in any way that inspires you.
     </div>
     <hr/>
+
+    <%= render partial: 'question_display', :locals => {:question => @question, :source => 'show' } %>
     
-    <div class="lead">
-      <%= @question.question %>
-      <span class="meta-details pad-l-10">
-        <br/><%= gravatar_for(@question.user, size: 20) %> posed by <%= @question.user.username %> on <%= @question.created_at.strftime("%B %d, %Y") %>
-      </span>
-    </div>
   </div>
 </div>
 

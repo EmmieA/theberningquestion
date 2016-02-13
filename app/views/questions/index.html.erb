@@ -1,4 +1,4 @@
-<%= render partial: 'shared/page_title', :locals => {:heading => 'All Submitted Questions'} %>
+<%= render partial: 'shared/page_title', :locals => {:heading => 'All Submitted Questions - Newest First'} %>
 
 <p class="subtitle">
   Here's everything we're talking about these days. You can vote up what concerns you directly on this page 
@@ -9,17 +9,8 @@
 
 <% @questions.each do |question| %>
 
-  <div class="row">
-    <div class="col-md-12">
-      <div class="lead">
-        <%= question.question %>
-        <span class="meta-details pad-l-10">
-          <br/>posed by <%= question.user.username %> on <%= question.created_at.strftime("%B %d, %Y") %>
-        </span>
-      </div>
-    </div>
-  </div>
-
+  <%= render partial: 'question_display', :locals => {:question => question, :source => 'index' } %>
+  
   <%= render partial: 'voting_bar', :locals => {:question => question, :source => 'index'} %>
 
 <% end %>

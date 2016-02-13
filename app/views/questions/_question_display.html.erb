@@ -1,0 +1,10 @@
+<div class="row">
+  <div class="col-md-12">
+    <div class="lead"><a name='q_<%= question.id %>'></a>
+      <%= question.question %>
+      <span class="meta-details pad-l-10">
+        <br/><%= gravatar_for(question.user, size: 20) %> posed by <%= question.user.username %> on <%= question.created_at.strftime("%B %d, %Y") %>
+      </span>
+    </div>
+  </div>
+</div>

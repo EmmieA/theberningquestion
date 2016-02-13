@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="well well-sm col-md-12">
+  <div class="well well-sm col-md-12 thin">
     <div class="pull-right text-right" style="width: 32%;">
       &nbsp;<%= link_to('See More', question) if source == 'index' %>
       <% if current_user == question.user || current_user.admin? %>
@@ -11,20 +11,21 @@
       <span class="badge"><%= pluralize(question.votes.count, "vote") %></span>
       <span class="badge"><%= pluralize(question.blurbs.count, "blurb") %></span>
     </div>
+    
     <div style="text-align: center;" style="width: 36%">
       
       <% if current_user.has_already_voted?(question.id) %>
-        <%= link_to(unvote_path(question_id: question.id), 
+        <%= link_to(unvote_path(question_id: question.id, source: source, page: params[:page]), 
                       method: :delete) do %>
           <span data-toggle="tooltip" title="Cancel my vote"><i class="fa fa-star orange"></i><i class="fa fa-star orange"></i><i class="fa fa-star orange"></i></span>
         <% end %>
       <% else %>
-        <%= link_to(vote_path(question_id: question.id), 
+        <%= link_to(vote_path(question_id: question.id, source: source, page: params[:page]), 
                   method: :post) do %>
           <span data-toggle="tooltip" title="Vote this question up"><i class="fa fa-star-o orange"></i><i class="fa fa-star-o orange"></i><i class="fa fa-star-o orange"></i></span>
         <% end %>
-
       <% end %>
+      
     </div>
   </div>
 </div>
