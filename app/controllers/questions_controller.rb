@@ -51,9 +51,9 @@ class QuestionsController < ApplicationController
   
   def vote
     if params[:question_id].present?
-      @vote = Vote.new(question_id: params[:question_id], user: current_user)
+      vote = Vote.new(question_id: params[:question_id], user: current_user)
 
-      @vote.save ? did_save = true : false
+      vote.save ? did_save = true : false
 
       after_vote_goto_page(params[:source], did_save, params[:question_id])
     end
@@ -61,11 +61,11 @@ class QuestionsController < ApplicationController
 
   def unvote
     if params[:question_id].present?
-      @vote = current_user.votes.where(question_id: params[:question_id]).first
+      vote = current_user.votes.where(question_id: params[:question_id]).first
       did_destroy = false
       
-      if @vote
-        @vote.destroy
+      if vote
+        vote.destroy
         did_destroy = true
       end
       
@@ -75,6 +75,7 @@ class QuestionsController < ApplicationController
   
 
   private
+  
     # Use callbacks to share common setup or constraints between actions.
     def set_question
       @question = Question.find(params[:id])
@@ -106,11 +107,11 @@ class QuestionsController < ApplicationController
     def question_params
       params.require(:question).permit(:question, topic_ids: [])
     end
-
-  def require_same_user
-    if current_user != @question.user
-      flash[:danger] = "You can only edit or delete your own article"
-      redirect_to root_path
+    
+    def require_same_user
+      if current_user != @question.user
+        flash[:danger] = "You can only edit or delete your own article"
+        redirect_to root_path
+      end
     end
-  end
 end

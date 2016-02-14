@@ -9,6 +9,8 @@ class Question < ActiveRecord::Base
   validates :question, presence: true, length: { minimum: 50, maximum: 300 }
   validates :user_id, presence: true
   
+  accepts_nested_attributes_for :answer
+
   scope :most_voted,  -> {
     where(created_at: (Time.now - 7.days)..Time.now ) # created 7 days ago
     .order(votes_count: :desc, updated_at: :desc)     # ordered by votes_count and then updated at

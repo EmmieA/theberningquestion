@@ -10,6 +10,20 @@
     <div class="pull-left" style="width: 32%">
       <span class="badge"><%= pluralize(question.votes.count, "vote") %></span>
       <span class="badge"><%= pluralize(question.blurbs.count, "blurb") %></span>
+      
+      <!-- If the user is confirmed as Bernie, show the Answer button -->
+      <% if current_user.bernie? %>
+        <span class='pad-l-10'>
+          <button type="button" class="btn btn-success btn-xs" 
+                data-toggle="modal" 
+                data-target="#answerModal" 
+                data-question="<%= question.question %>" 
+                data-username="<%= question.user.username %>" 
+                data-question_id="<%= question.id %>">Answer!</button></span>
+        </span>
+      <% end %>
+      <!---------------->
+      
     </div>
     
     <div style="text-align: center;" style="width: 36%">

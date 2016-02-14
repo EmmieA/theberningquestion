@@ -1,0 +1,20 @@
+<div id="answerModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-success">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Thanks! Your answer means so much.</h4>
+      </div>
+      <div class="modal-body">
+        <div class="instructions">"<span id="question-text"></span>" - <span id="user"></span></div>
+        <%= text_area_tag :answer, nil, size: "76x10", maxlength: 1000, autofocus: true, placeholder: 'Can be up to 1000 characters' %>
+        <%= hidden_field_tag :question_id, nil %>
+      </div>
+      <div class="modal-footer">
+        <%= link_to(answers_path, method: :post, class: 'btn btn-success') do %>
+          Save Answer
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
