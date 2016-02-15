@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources   :blurbs
   resources   :friendships
   resources   :answers, only: [:new, :create]
+  resources   :topics, only: [:index]
 
   post    'vote',             to: 'questions#vote'
   delete  'unvote',           to: 'questions#unvote'
