@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :get_user, only: [:destroy, :show]
   
   def index
-    @users = User.all_except(current_user)
+    @users = User.all_except(current_user).order('created_at DESC')
   end
   
   def destroy
