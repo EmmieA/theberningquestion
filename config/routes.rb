@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  devise_for :users
+
   root 'welcome#index'
 
   resources   :questions
@@ -7,6 +9,8 @@ Rails.application.routes.draw do
   resources   :friendships
   resources   :answers, only: [:new, :create]
   resources   :topics, only: [:index]
+  resources   :comments, only: [:create]
+  resources   :users, only: [:index, :destroy]
 
   post    'vote',             to: 'questions#vote'
   delete  'unvote',           to: 'questions#unvote'
@@ -14,7 +18,5 @@ Rails.application.routes.draw do
   get     'search_friends',   to: "users#search"
   post    'add_friend',       to: "users#add_friend"
   get     'my_feed',          to: "users#my_feed"
-
-  devise_for :users
 
 end

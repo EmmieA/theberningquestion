@@ -1,7 +1,18 @@
 class UsersController < ApplicationController
   
+  before_action :get_user, only: [:destroy, :show]
+  
+  def index
+    @users = User.all_except(current_user)
+  end
+  
+  def destroy
+    @user.destroy
+    flash[:danger] = "User successfully removed"
+    redirect_to users_path
+  end
+  
   def show
-    @user = User.find(params[:id])
   end
 
   def my_friends
@@ -35,5 +46,11 @@ class UsersController < ApplicationController
       redirect_to my_friends_path, flash[:error] = "There was a problem creating the friend"
     end
   end
+  
+  private
+  
+    def get_user
+      @user = User.find(params[:id])
+    end
   
 end

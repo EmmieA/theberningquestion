@@ -26,7 +26,25 @@
     <% @blurbs.each do |blurb| %>
       <tr>
         <td><%= gravatar_for(blurb.user, size: 20) %></td>
-        <td><span class="blurb-list"><%= blurb.blurb %></span> <span class="label label-info"><%= pluralize(blurb.comments.count, 'comment') %></span></td>
+        <td>
+          <span class="blurb-list"><%= blurb.blurb %></span> 
+          <span class="label label-info" id='blurb-comment'><%= pluralize(blurb.comments.count, 'comment') %></span>
+          <br>
+          <div class="pad-t-5"><textarea id="comment_<%= blurb.id%>" 
+                                  data-blurb-id="<%= blurb.id%>" 
+                                  rows="1" 
+                                  cols="80" 
+                                  class="small"
+                                  placeholder="comment on this (120 characters)"></textarea>
+            <%= link_to(comments_path, {blurb_id: blurb.id, method: :post}) do %>
+              <i class="fa fa-plus-square fa-lg text-success"></i>
+            <% end %>
+          </div>
+          <% if blurb.comments.any? %>
+            <hr>
+          <% end %>
+          
+        </td>
       </tr>
     <% end %>
   </table>

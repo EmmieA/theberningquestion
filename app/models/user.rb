@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :all_blurb_feedback, through: :blurbs, source: :comments
   has_many :all_question_blurbs, through: :questions, source: :blurbs
   
+  scope :all_except, ->(user) { where.not(id: user) }
+  
   def friend_posts()
     sql = "SELECT b.Blurb AS userpost, b.updated_at AS updated, u.username AS author, 'blurb' AS posttype, question_id AS question_id "\
           "FROM Blurbs AS b "\
@@ -61,18 +63,18 @@ class User < ActiveRecord::Base
   end
   
   
-  # I think these should possibly be private
+  private 
   
-  def self.username_matches(param)
-    matches('username', param)
-  end
-  
-  def self.email_matches(param)
-    matches('email', param)
-  end
-  
-  def self.matches(field_name, param)
-    where("lower(#{field_name}) like ?", "%#{param}%")
-  end
-  
+    def self.username_matches(param)
+      matches('username', param)
+    end
+    
+    def self.email_matches(param)
+      matches('email', param)
+    end
+    
+    def self.matches(field_name, param)
+      where("lower(#{field_name}) like ?", "%#{param}%")
+    end
+    
 end
