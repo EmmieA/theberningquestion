@@ -8,7 +8,11 @@
     <dl>
       <dt>Topic Range</dt>
       <% @topics.each do |topic| %>
-        <dd>- <%= link_to topic.name, topics_path(topic_id: topic.id) %></dd>
+        <dd>- <%= link_to topic.name, topics_path(topic_id: topic.id) %>
+          <% if topic.questions.any? %>
+            <span class="badge pull-right"><%= topic.questions.count %></span>
+          <% end %>
+        </dd>
       <% end %>
     </dl>
   </div>
