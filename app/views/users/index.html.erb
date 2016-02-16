@@ -3,7 +3,7 @@
 <p class="subtitle">All registered users as of today, their collective votes and posts</p>
 
 <div class="row col-md-12">
-  <% if @users.count == 0 %>
+  <% if @users.count == 1 %>
     <div class="well text-center box-shadow">
       <h4>It's just you, my friend</h4>
       <p>
@@ -25,15 +25,20 @@
       <tbody>
       <% @users.each do |user| %>
         <tr>
-          <td><%= user.username %></td>
+          <td><%= link_to user.username, user_questions_path(user_id: user.id), class: 'no-decoration' %></td>
           <td><%= user.created_at %></td>
           <td class="text-right"><%= user.votes.count %></td>
           <td class="text-right"><%= user.questions.count + user.blurbs.count %></td>
-          <td class="text-center"><%= link_to(user, { method: :delete, 
-                                                      data: { confirm: 'Are you sure?' },
-                                                      'data-toggle' => 'tooltip'},
-                                                      'title' => 'Delete this user') do %>
-              <i class="fa fa-remove fa-lg text-danger"></i>
+          <td class="text-center">
+            <% if !user.admin? %>
+              <%= link_to(user, { method: :delete, 
+                                                        data: { confirm: 'Are you sure?' },
+                                                        'data-toggle' => 'tooltip', 
+                                                        :title => 'Delete this user'}) do %>
+                <i class="fa fa-remove fa-lg text-danger"></i>
+              <% end %>
+            <% else %>
+              <a data-toggle='tooltip' title='Cannot delete admins'><i class="fa fa-remove fa-lg text-disabled"></i></a>
             <% end %>
           </td>
         </tr>

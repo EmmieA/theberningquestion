@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :get_user, only: [:destroy, :show]
   
   def index
-    @users = User.all_except(current_user).order('created_at DESC')
+    @users = User.all.order('created_at DESC')
   end
   
   def destroy
@@ -17,6 +17,12 @@ class UsersController < ApplicationController
 
   def my_friends
     @friendships = current_user.friends
+  end
+  
+  def user_questions()
+    if params[:user_id]
+      @questions = User.user_questions(params[:user_id])
+    end
   end
   
   def search

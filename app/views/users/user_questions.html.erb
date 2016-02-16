@@ -1,0 +1,18 @@
+<%= render partial: 'shared/page_title', :locals => {:heading => gravatar_for(@questions.first.user, size: 40) + " #{@questions.first.user.username}'s Question Submissions"} %>
+
+<div class="row">
+  <div class="col-md-12">
+    <% @questions.each do |question| %>
+         <div class="lead">
+           <%= question.question %>
+          <span class="meta-details pad-l-10">
+            <br/><%= question.created_at.strftime("%B %d, %Y") %>
+            &nbsp;&nbsp;found in:  
+            <% question.topics.each do |t| %>
+              <%= t.name %>
+            <% end %>
+          </span>
+        </div>
+    <% end %>
+  </div>
+</div>

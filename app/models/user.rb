@@ -15,6 +15,9 @@ class User < ActiveRecord::Base
   has_many :all_blurb_feedback, through: :blurbs, source: :comments
   has_many :all_question_blurbs, through: :questions, source: :blurbs
   
+  # Not currently used - was originally intended for the users/index not to show the current user 
+  # to prevent accidental deletion. Resolved instead with inline logic to not show a delete link 
+  # if the user being shown is an admin
   scope :all_except, ->(user) { where.not(id: user) }
   
   def friend_posts()
@@ -35,6 +38,10 @@ class User < ActiveRecord::Base
     # @friend_posts = ActiveRecord::Base.connection.select_all(sql)
     
     ActiveRecord::Base.connection.select_all(ActiveRecord::Base.send("sanitize_sql_array",[sql, self.id, self.id] ) )
+  end
+  
+  def self.user_questions(user_id)
+    Question.where(user_id: user_id).order('updated_at DESC')
   end
   
   

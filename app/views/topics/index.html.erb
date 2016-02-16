@@ -8,7 +8,7 @@
     <dl>
       <dt>Topic Range</dt>
       <% @topics.each do |topic| %>
-        <dd>- <%= link_to topic.name, topics_path(topic_id: topic.id) %></dd>
+        <dd>- <%= link_to topic.name, topics_path(topic: topic) %></dd>
       <% end %>
     </dl>
   </div>

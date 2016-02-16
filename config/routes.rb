@@ -18,5 +18,6 @@ Rails.application.routes.draw do
   get     'search_friends',   to: "users#search"
   post    'add_friend',       to: "users#add_friend"
   get     'my_feed',          to: "users#my_feed"
+  get     'user_questions',   to: "users#user_questions"
 
 end

@@ -3,7 +3,11 @@
     <div class="lead"><a name='q_<%= question.id %>'></a>
       <%= question.question %>
       <span class="meta-details pad-l-10">
-        <br/><%= gravatar_for(question.user, size: 20) %> posed by <%= question.user.username %> on <%= question.created_at.strftime("%B %d, %Y") %>
+        <br/><%= gravatar_for(question.user, size: 20) %> posed by 
+          <%= link_to question.user.username, user_questions_path(user_id: question.user.id), 
+              {'data-toggle' => 'tooltip', 
+              :title => "Read all #{question.user.username}'s questions"} %> 
+          on <%= question.created_at.strftime("%B %d, %Y") %>
       </span>
     </div>
   </div>
