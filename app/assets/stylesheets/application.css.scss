@@ -12,6 +12,7 @@
  * 
  * The line just below is a step in implementing the devise skin
  *= require devise_bootstrap_views
+ *= require bootstrap-sortable
  *= require_tree .
  *= require_self
  */

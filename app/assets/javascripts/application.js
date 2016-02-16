@@ -13,7 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require jquery.autosize
+//= require moment
+//= require bootstrap-sortable
 //= require_tree .
 
 var hide_spinner = function() {

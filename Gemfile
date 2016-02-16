@@ -13,7 +13,8 @@ gem 'devise-bootstrap-views'
 gem 'twitter'
 gem 'will_paginate', '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
-gem 'autosize-rails', '~> 1.18', '>= 1.18.17'
+gem 'momentjs-rails'
+gem 'rails_bootstrap_sortable'
 
 group :development, :test do
   gem 'sqlite3'
