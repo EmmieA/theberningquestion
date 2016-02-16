@@ -1,6 +1,11 @@
-<h1>Editing Question</h1>
+<%= render partial: 'shared/page_title', :locals => {:heading => 'Make improvements on your question'} %>
+
+<p class="subtitle">
+  Thanks for catching any little errors and making your question even better! Refining the context and 
+  verbiage is great, too. It only goes up from here!
+</p>
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @question %> |
+<%= link_to 'Question Page', @question %> |
 <%= link_to 'Back', questions_path %>
