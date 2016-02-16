@@ -37,11 +37,12 @@
               <%= link_to(user, { method: :delete, 
                               data: { confirm: 'Are you sure?' },
                               'data-toggle' => 'tooltip', 
+                              'data-placement' => 'left', 
                               :title => 'Delete this user'}) do %>
                 <i class="fa fa-remove fa-lg text-danger"></i>
               <% end %>
             <% else %>
-              <a data-toggle='tooltip' title='Cannot delete admins'><i class="fa fa-remove fa-lg text-disabled"></i></a>
+              <a data-toggle='tooltip' title='Cannot delete admins' data-placement='left'><i class="fa fa-remove fa-lg text-disabled"></i></a>
             <% end %>
           </td>
         </tr>
