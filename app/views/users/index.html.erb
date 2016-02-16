@@ -35,9 +35,9 @@
           <td class="text-center">
             <% if !user.admin? %>
               <%= link_to(user, { method: :delete, 
-                                                        data: { confirm: 'Are you sure?' },
-                                                        'data-toggle' => 'tooltip', 
-                                                        :title => 'Delete this user'}) do %>
+                              data: { confirm: 'Are you sure?' },
+                              'data-toggle' => 'tooltip', 
+                              :title => 'Delete this user'}) do %>
                 <i class="fa fa-remove fa-lg text-danger"></i>
               <% end %>
             <% else %>
