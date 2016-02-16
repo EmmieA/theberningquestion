@@ -5,4 +5,5 @@ class Topic < ActiveRecord::Base
 
   # CALLBACKS
   before_save { self.name = name.downcase }
+  
 end

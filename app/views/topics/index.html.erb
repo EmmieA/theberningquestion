@@ -4,28 +4,30 @@
 
 <div class="row">
   
-  <div class="col-md-3">
+  <div class="well well-sm col-md-3">
     <dl>
       <dt>Topic Range</dt>
       <% @topics.each do |topic| %>
-        <dd>- <%= link_to topic.name, topics_path(topic: topic) %></dd>
+        <dd>- <%= link_to topic.name, topics_path(topic_id: topic.id) %></dd>
       <% end %>
     </dl>
   </div>
     
   <div class="col-md-9">
     
-    <% if @questions %>
-      <% if @questions.size > 0 %>
-        <% @questions.each do |question| %>
-          <p><%= question.question %></p>
+    <% if @topic_questions %>
+      <% if @topic_questions.any? %>
+        <% @topic_questions.each do |question| %>
+          <div class="mb-10"><%= question.question %> <span class="meta-details">- <%= question.user.username %>, <%= question.created_at.strftime("%B %d, %Y") %></span></div>
+          <hr>
         <% end %>
       <% else %>
-        <h4>Nothing found</h4>
+        <p class="instructions text-center">No questions have been submitted under <strong><%= @topic.name %></strong></p>
       <% end %>
     <% else %>
-      <p class="instructions">Browse questions by selecting a topic on the left</p>
+      <p class="lead text-center">Browse questions by selecting a topic on the left</p>
     <% end %>
+    
   </div>
   
 </div>
