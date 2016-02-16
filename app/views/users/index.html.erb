@@ -17,6 +17,7 @@
         <tr>
           <th>UserName</th>
           <th>Joined</th>
+          <th>Last Visit</th>
           <th class="text-right">Total Votes</th>
           <th class="text-right"># of Posts</th>
           <th class="text-center">Action</th>
@@ -27,6 +28,7 @@
         <tr>
           <td><%= link_to user.username, user_questions_path(user_id: user.id), class: 'no-decoration' %></td>
           <td><%= user.created_at %></td>
+          <td><%= user.last_sign_in_at %></td>
           <td class="text-right"><%= user.votes.count %></td>
           <td class="text-right"><%= user.questions.count + user.blurbs.count %></td>
           <td class="text-center">
