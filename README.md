@@ -6,6 +6,10 @@
 </p>
 
 <p>
+  Production version running on Heroku at <a href="https://theberningquestion.herokuapp.com/">The Berning Question</a>
+</p>
+
+<p>
   Conceived amidst the 2016 presedential race, the application provides a simple platform for "doing politics" a little differently - at least 
   in one small way of putting people in touch with a candidate they want to speak with. The intention is to allow regular folks to pose 
   honest questions asking how-will-you-actually-do-that about Bernie Sanders' talking points, voting on questions, and initiating 
